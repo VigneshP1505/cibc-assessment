@@ -1,0 +1,65 @@
+<!-- <div class="transaction-details" *ngIf="transaction">
+    <h2>Transaction Details</h2>
+    <ul>
+      <li><strong>ID:</strong> {{ transaction.id }}</li>
+      <li><strong>Status:</strong> {{ transaction.status }}</li>
+      <li><strong>Amount:</strong> {{ transaction.amount | currency:'USD':'symbol':'1.2-2' }}</li>
+      <li><strong>Currency:</strong> {{ transaction.currencyCd }}</li>
+      <li><strong>Comments:</strong> {{ transaction.comments }}</li>
+      <li><strong>Date:</strong> {{ transaction.Date }}</li>
+    </ul>
+  
+    <h3>Sender Information</h3>
+    <ul>
+      <li><strong>Name:</strong> {{ transaction.sender.firstName }} {{ transaction.sender.lastName }}</li>
+      <li><strong>Date of Birth:</strong> {{ transaction.sender.dateOfBirth | date:'longDate' }}</li>
+      <li><strong>ID Number:</strong> {{ transaction.sender.IDNumber }}</li>
+    </ul>
+  
+    <h3>Recipient Information</h3>
+    <ul>
+      <li><strong>Name:</strong> {{ transaction.recipient.firstName }} {{ transaction.recipient.lastName }}</li>
+      <li><strong>Email:</strong> {{ transaction.recipient.email }}</li>
+      <li><strong>Account Number:</strong> {{ transaction.recipient.accountNumber }}</li>
+      <li><strong>Bank:</strong> {{ transaction.recipient.bank }}</li>
+    </ul>
+  </div>
+  
+  <div *ngIf="!transaction">
+    <p>Loading transaction details...</p>
+  </div>
+   -->
+
+
+
+
+   <div class="container mt-4" *ngIf="transaction">
+    <h2>Transaction Details</h2>
+    <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="id">ID:</label>
+            <input type="text" id="id" class="form-control" formControlName="id" readonly>
+          </div>
+          <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="text" id="date" class="form-control" formControlName="Date" readonly>
+          </div>
+          <div class="form-group">
+            <label for="comments">Comments:</label>
+            <textarea id="comments" class="form-control" formControlName="comments" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary mt-2">Update Comments</button>
+        </div>
+      </div>
+    </form>
+
+    <div *ngIf="updateStatus===true">Updated comment</div>
+
+  </div>
+  
+  <div class="container" *ngIf="!transaction">
+    <p>Loading transaction details...</p>
+  </div>  
+  

@@ -1,0 +1,5 @@
+API/node_modules
+API/.env
+app/node_modules
+app/.angular
+app/.vscode
